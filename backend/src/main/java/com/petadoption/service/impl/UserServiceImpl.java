@@ -179,7 +179,7 @@ public class UserServiceImpl implements UserService {
         }
 
         // 验证原密码
-        if (!PasswordUtil.matches(dto.getOldPassword(), user.getPassword())) {
+        if (PasswordUtil.matches(dto.getOldPassword(), user.getPassword())) {
             throw BusinessException.badRequest("原密码错误");
         }
 

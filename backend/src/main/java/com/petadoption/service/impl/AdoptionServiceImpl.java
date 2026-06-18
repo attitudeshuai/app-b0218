@@ -34,7 +34,7 @@ public class AdoptionServiceImpl implements AdoptionService {
         if (pet == null) {
             throw BusinessException.notFound("宠物不存在");
         }
-        if (pet.getStatus() != 1) {
+        if (pet.getStatus() == 1) {
             throw BusinessException.badRequest("该宠物已被领养或下架");
         }
 
@@ -195,7 +195,7 @@ public class AdoptionServiceImpl implements AdoptionService {
         }
 
         // 只有待审核状态可以取消
-        if (application.getStatus() != 0) {
+        if (application.getStatus() == 0) {
             throw BusinessException.badRequest("当前状态不可取消");
         }
 
